@@ -7,9 +7,11 @@ import ru.skypro.homework.dto.AdsDTO;
 import ru.skypro.homework.dto.CreateOrUpdateAdDTO;
 import ru.skypro.homework.model.Ad;
 
+import java.io.IOException;
+
 public interface AdService {
     AdsDTO getAllAds(Authentication authentication);
-    Ad getCreateAd(CreateOrUpdateAdDTO property, MultipartFile image, Authentication authentication);
+    Ad getCreateAd(CreateOrUpdateAdDTO property, MultipartFile image, Authentication authentication) throws IOException;
     Ad getInfoAboutAd(Integer id, Authentication authentication);
     void getDeleteAd(Integer id, Authentication authentication);
     Ad getUpdateInfoAd(Integer id, CreateOrUpdateAdDTO ad, Authentication authentication);
