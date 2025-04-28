@@ -33,7 +33,8 @@ public class AdController {
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Ad> getCreateAd(@RequestBody CreateOrUpdateAdDTO property, @RequestBody MultipartFile image, Authentication authentication) throws IOException {
+    public ResponseEntity<Ad> getCreateAd(@RequestBody CreateOrUpdateAdDTO property,
+                                          @RequestBody MultipartFile image, Authentication authentication) throws IOException {
         Ad ad = adService.getCreateAd(property, image, authentication);
         return ResponseEntity.ok(ad);
     }
@@ -50,7 +51,8 @@ public class AdController {
     }
 
     @PatchMapping(path = "/{id}")
-    public ResponseEntity<Ad> getUpdateInfoAd(@PathVariable Integer id, @RequestBody CreateOrUpdateAdDTO propertyAdDTO, Authentication authentication) {
+    public ResponseEntity<Ad> getUpdateInfoAd(@PathVariable Integer id,
+                                              @RequestBody CreateOrUpdateAdDTO propertyAdDTO, Authentication authentication) {
         Ad ad = adService.getUpdateInfoAd(id, propertyAdDTO, authentication);
         return ResponseEntity.ok(ad);
     }
@@ -61,7 +63,8 @@ public class AdController {
     }
 
     @PatchMapping(path = "/{id}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> getUpdateImageAd(@PathVariable Integer id, @RequestBody MultipartFile image, Authentication authentication) {
+    public ResponseEntity<?> getUpdateImageAd(@PathVariable Integer id,
+                                              @RequestBody MultipartFile image, Authentication authentication) {
         return ResponseEntity.ok(imageService.addImage(id, image, authentication));
     }
 }
